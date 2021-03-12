@@ -1,0 +1,334 @@
+.main-navigation {
+	display: block;
+	width: 100%;
+
+	ul {
+		display: none;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+		background-color: white;
+
+		ul {
+			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+			float: left;
+			position: absolute;
+			top: 100%;
+			left: -999em;
+			z-index: 99999;
+
+			ul {
+				left: -999em;
+				top: 0;
+			}
+
+			li {
+
+				&:hover>ul,
+				&.focus>ul {
+					display: block;
+					left: auto;
+				}
+			}
+
+			a {
+				width: 200px;
+			}
+
+			:hover>a,
+			.focus>a {}
+
+			a:hover,
+			a.focus {}
+		}
+
+		li:hover>ul,
+		li.focus>ul {
+			left: auto;
+		}
+	}
+
+	li {
+		position: relative;
+
+		&:hover>a,
+		&.focus>a {}
+	}
+
+	a {
+		display: block;
+		text-decoration: none;
+	}
+
+	.current_page_item>a,
+	.current-menu-item>a,
+	.current_page_ancestor>a,
+	.current-menu-ancestor>a {}
+}
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+	display: block;
+}
+
+
+
+#masthead {
+	grid-area: header;
+}
+
+.site-main {
+	display: grid;
+	grid-area: main;
+	grid-template-areas: "art1""art2";
+}
+
+#post-1 {
+	grid-area: art1;
+}
+
+#post-11 {
+	grid-area: art2;
+}
+
+aside {
+	grid-area: aside;
+	display: grid;
+	grid-template-areas: "recherche""section1""section2";
+	grid-template-columns: 100%;
+}
+
+#search-2 {
+	grid-area: recherche;
+}
+
+#recent-posts-2 {
+	grid-area: section1;
+}
+
+#recent-comments-2 {
+	grid-area: section2;
+}
+
+.site-footer {
+	grid-area: footer;
+}
+
+.clip-anim {
+	animation: plan 2s forwards;
+	transform: clip-path(polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%));
+}
+
+.clip-anim {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	content: '';
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #fff;
+	z-index: -1;
+	clip-path: polygon(100% 50%, 0% 100%, 100% 0%, 50% 100%);
+
+}
+
+#page {
+	display: grid;
+	grid-template-areas: "header""main""aside""footer";
+}
+
+@keyframes plan {
+	0% {
+		clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%);
+	}
+
+	100% {
+		clip-path: polygon(100% 50%, 0% 100%, 100% 0%, 50% 100%);
+	}
+}
+
+h1 {
+	font-size: clamp(3vw, 4vw, 5vw)
+}
+
+// Bouton burger
+
+
+$largeur-burger : 2rem;
+$duree : .10s;
+$epaisseur : 8%;
+
+
+	#burger {
+		position : relative;
+		width:$largeur-burger ;
+		height : $largeur-burger ;
+		// border : 1px solid #aaa;
+		border-radius : 50%;
+		overflow: hidden;
+		background: none;
+		border-color: gold;
+	
+		div{
+			top: 0;
+			left : 0;
+			position:absolute;
+			width : 100%;
+			height : 100%;
+		
+			&:nth-of-type(1){
+				background-color: white;
+				clip-path: polygon(0 20%, 100% 20%, 100% 30%, 0 30%);
+			}
+			&:nth-of-type(2){
+				background-color: white;
+				clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+			}
+			&:nth-of-type(3){
+				background-color: white;
+				clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+			}
+		}
+	}
+	@keyframes ouvreX1{
+		0%{
+			clip-path: polygon(0 20%, 100% 20%, 100% 30%, 0 30%);
+		}
+		100%{
+			clip-path: polygon($epaisseur  (-$epaisseur),  100%+$epaisseur 100%-$epaisseur ,100%-$epaisseur 100%+$epaisseur, -$epaisseur $epaisseur);
+		}
+	}
+	@keyframes fermeX1{
+		0%{
+			clip-path: polygon($epaisseur  (-$epaisseur),  100%+$epaisseur 100%-$epaisseur ,100%-$epaisseur 100%+$epaisseur, -$epaisseur $epaisseur);
+		}
+		100%{
+			 clip-path: polygon(0 20%, 100% 20%, 100% 30%, 0 30%);
+		}
+	}
+	
+	.ouvreX1 {
+		animation : ouvreX1 $duree both;
+	}
+	
+	.fermeX1 {
+		animation : fermeX1 $duree both;
+	}
+	
+	/* -----------------------------------------------------------------------------------
+	La barre du bas
+	-------------------------------------------------------------------------------------- */
+	@keyframes ouvreX3{
+		0%{
+			clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+		}
+		100%{
+			clip-path: polygon( (-$epaisseur)  100%-$epaisseur,  100%-$epaisseur (-$epaisseur) , 100%+$epaisseur $epaisseur, $epaisseur 100%+$epaisseur);
+		}
+	}
+	@keyframes fermeX3{
+		0%{
+			clip-path: polygon(-4%  96%,  96% -4% , 104% 4%, 4% 104%);
+		}
+		100%{
+			clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+		}
+	}
+	
+	.ouvreX3 {
+		animation : ouvreX3 $duree both;
+	}
+	
+	.fermeX3 {
+		animation : fermeX3 $duree both;
+	}
+	
+	/* -----------------------------------------------------------------------------------
+	La barre du millieu
+	-------------------------------------------------------------------------------------- */
+	@keyframes ouvreX2{
+		0%{
+			clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+		}
+		100%{
+			clip-path: polygon(48%  48%,  52% 48% , 52% 52%, 48% 52%);
+		}
+	}
+	@keyframes fermeX2{
+		0%{
+			clip-path: polygon(48%  48%,  52% 48% , 52% 52%, 48% 52%);
+		}
+		100%{
+			clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+		}
+	}
+	
+	.ouvreX2 {
+		animation : ouvreX2 $duree both;
+	}
+	
+	.fermeX2 {
+		animation : fermeX2 $duree both;
+	}
+
+
+
+@media screen and (min-width: 37.5em) {
+#burger{
+	display: none;
+}
+	.menu-toggle {
+		display: none;
+	}
+
+	.main-navigation ul {
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	.menu-toggle, .main-navigation.toggled ul {
+    display: flex;
+	}
+
+	#page {
+
+		grid-template-areas: "header header""main main""aside aside""footer footer";
+		grid-template-columns: 50% 50%;
+	}
+
+	.site-main {
+		grid-template-areas: "art1 art2";
+	}
+
+	aside {
+
+		grid-template-areas: "recherche section2""section1 section2";
+		grid-template-columns: 50%;
+	}
+
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+	}
+
+	.nav-links {
+		display: flex;
+	}
+
+	.nav-previous {
+		flex: 1 0 50%;
+	}
+
+	.nav-next {
+		text-align: end;
+		flex: 1 0 50%;
+	}
+}
