@@ -684,6 +684,10 @@ textarea {
   display: block;
 }
 
+ul li .sub-menu {
+  display: block;
+}
+
 #masthead {
   grid-area: header;
 }
@@ -880,6 +884,9 @@ h1 {
 }
 
 @media screen and (min-width: 37.5em) {
+  ul li .sub-menu {
+    display: block;
+  }
   #burger {
     display: none;
   }
